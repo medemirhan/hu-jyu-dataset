@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Print per-band statistics (min, max, mean, std) of a hyperspectral datacube.
 

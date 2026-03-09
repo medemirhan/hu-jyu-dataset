@@ -6,8 +6,13 @@ __pycache__/
 *.pyc
 *.pyo
 
-# Converted outputs
-*.mat
+# Output files (keep folder structure and examples)
+output/mat/*
+output/spectra/*
+output/false_color/*
+output/stats/*
+!output/examples/
+!output/**/.gitkeep
 
 # OS
 .DS_Store

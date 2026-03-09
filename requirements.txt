@@ -4,7 +4,7 @@ fonttools==4.62.0
 kiwisolver==1.5.0
 matplotlib==3.10.8
 numpy==2.4.3
-packaging @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_packaging_1769093650/work
+packaging==26.0
 pillow==12.1.1
 pyparsing==3.3.2
 python-dateutil==2.9.0.post0

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Generate a false-color RGB visualization from a hyperspectral datacube.
 

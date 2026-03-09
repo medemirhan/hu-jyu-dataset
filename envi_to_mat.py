@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Convert ENVI raw+hdr hyperspectral data to a MATLAB .mat file.
 

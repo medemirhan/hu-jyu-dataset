@@ -39,6 +39,17 @@ data/444/
 - **capture/** contains the raw datacube and radiometric calibration references.
 - **results/** contains the reflectance datacube (already calibrated using the white/dark references) and RGB previews.
 
+Script outputs are organized under `output/`:
+
+```
+output/
+├── mat/          # Converted .mat files
+├── spectra/      # Spectral signature plots
+├── false_color/  # False-color visualizations
+├── stats/        # Band statistics CSV exports
+└── examples/     # Example outputs (tracked in git)
+```
+
 ## Data Download
 
 The hyperspectral data files are not included in this repository due to their size. Download link will be shared in the future. Once downloaded, place the capture folders (e.g. `444/`, `445/`, ...) inside the `data/` directory.
@@ -67,16 +78,13 @@ Convert a raw or reflectance ENVI datacube to a MATLAB `.mat` file. The output c
 
 ```bash
 # Convert raw capture
-python envi_to_mat.py 444
+python envi_to_mat.py 444 -o output/mat/444.mat
 
 # Convert reflectance data
-python envi_to_mat.py 444 --source results
+python envi_to_mat.py 444 --source results -o output/mat/444_reflectance.mat
 
 # Convert a calibration file
-python envi_to_mat.py 444 --prefix WHITEREF
-
-# Custom output path
-python envi_to_mat.py 444 -o my_output.mat
+python envi_to_mat.py 444 --prefix WHITEREF -o output/mat/444_whiteref.mat
 ```
 
 ### Spectral Signature
@@ -85,10 +93,10 @@ Plot the spectral signature at a given pixel location. By default, the spectrum 
 
 ```bash
 # Plot spectrum at row=100, col=200
-python spectral_signature.py 444 100 200
+python spectral_signature.py 444 100 200 --save output/spectra/signature.png
 
 # Compare multiple pixels
-python spectral_signature.py 444 100 200 --also 150,250 200,300
+python spectral_signature.py 444 100 200 --also 150,250 200,300 --save output/spectra/signature_multi.png
 
 # Change averaging window size (default: 5)
 python spectral_signature.py 444 100 200 --window 11
@@ -97,11 +105,16 @@ python spectral_signature.py 444 100 200 --window 11
 python spectral_signature.py 444 100 200 --window 1
 
 # Use reflectance data
-python spectral_signature.py 444 100 200 --source results
-
-# Save to file
-python spectral_signature.py 444 100 200 --save signature.png
+python spectral_signature.py 444 100 200 --source results --save output/spectra/signature_refl.png
 ```
+
+**Example — single pixel:**
+
+![Spectral signature (single)](output/examples/spectral_signature_single.png)
+
+**Example — multiple pixels:**
+
+![Spectral signature (multi)](output/examples/spectral_signature_multi.png)
 
 ### False-Color Visualization
 
@@ -109,17 +122,18 @@ Generate a false-color RGB image from the datacube. Default bands are read from 
 
 ```bash
 # Default false-color
-python false_color.py 444
+python false_color.py 444 --save output/false_color/444.png
 
 # Custom bands (R, G, B as 0-indexed band numbers)
-python false_color.py 444 --bands 100 70 30
+python false_color.py 444 --bands 100 70 30 --save output/false_color/444_custom.png
 
 # From reflectance data
-python false_color.py 444 --source results
-
-# Save to file
-python false_color.py 444 --save false_color.png
+python false_color.py 444 --source results --save output/false_color/444_refl.png
 ```
+
+**Example:**
+
+![False color](output/examples/false_color.png)
 
 ### Band Statistics
 
@@ -130,7 +144,7 @@ Print per-band statistics (min, max, mean, standard deviation) for quick quality
 python band_stats.py 444
 
 # Export to CSV
-python band_stats.py 444 --csv stats.csv
+python band_stats.py 444 --csv output/stats/444_stats.csv
 ```
 
 ### Common Options

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Plot the spectral signature of a pixel from a hyperspectral .mat file.
 
