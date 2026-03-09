@@ -1,0 +1,11 @@
+name: hsi
+channels:
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - numpy
+      - scipy
+      - matplotlib
+      - spectral

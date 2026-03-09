@@ -1,0 +1,14 @@
+# Data folders (downloaded separately)
+data/*/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Converted outputs
+*.mat
+
+# OS
+.DS_Store
+Thumbs.db
