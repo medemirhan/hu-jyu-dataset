@@ -1,6 +1,6 @@
-# Specim IQ Hyperspectral Dataset
+# HU-JYU Hyperspectral Dataset
 
-Hyperspectral image captures recorded with a **Specim IQ** portable camera, along with Python tools for data conversion, visualization, and analysis.
+Hyperspectral image captures recorded with a Specim IQ portable camera, along with Python tools for data conversion, visualization, and analysis.
 
 ## Sensor Specifications
 
@@ -56,8 +56,8 @@ The hyperspectral data files are not included in this repository due to their si
 
 ## Setup
 
+Create and activate the conda environment
 ```bash
-# Create and activate the conda environment
 conda env create -f environment.yml
 conda activate hsi
 ```
@@ -180,4 +180,3 @@ rgb = false_color(cube, bands=[69, 52, 18])
 ## License
 
 Please cite this dataset appropriately if you use it in your research.
-# hu-jyu-dataset
